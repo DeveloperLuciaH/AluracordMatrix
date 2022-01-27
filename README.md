@@ -18,7 +18,5 @@ https://vercel.com/developerluciah/aluracord-matrix
 <br />
 <h4> Tela de Mobile Foto Padrão antes do Submit </h4>
 <img src="public/img/img4.jpeg" alt="">
-<br />
-<h4> Tela de Mobile Chat Offline </h4>
-<img src="public/img/img5.jpeg" alt="">
+
 

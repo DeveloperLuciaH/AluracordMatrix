@@ -42,7 +42,8 @@ export default function ChatPage() {
             styleSheet={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 backgroundColor: appConfig.theme.colors.primary[500],
-                backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
+                backgroundImage: 'url(/img/gwen.png)',
+                //backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
                 backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
                 color: appConfig.theme.colors.neutrals['000']
             }}
@@ -112,7 +113,7 @@ export default function ChatPage() {
 
                             }}
 
-                            placeholder="Insira sua mensagem aqui..."
+                            placeholder="Digite aqui a sua mensagem aqui..."
                             type="textarea"
                             styleSheet={{
                                 width: '100%',
@@ -120,7 +121,7 @@ export default function ChatPage() {
                                 resize: 'none',
                                 borderRadius: '5px',
                                 padding: '6px 8px',
-                                backgroundColor: appConfig.theme.colors.neutrals[800],
+                                backgroundColor: appConfig.theme.colors.transparente.fundo,
                                 marginRight: '12px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
@@ -137,14 +138,24 @@ function Header() {
         <>
             <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
                 <Text variant='heading5'>
-                    Chat
+                    KikMeinCord
                 </Text>
                 <Button
-                    variant='tertiary'
-                    colorVariant='neutral'
-                    label='Logout'
-                    href="/"
-                />
+                        variant='tertiary'
+                        label='Sair'
+                        href="/"
+                        styleSheet={{
+                            borderRadius: '5px',
+                            // padding: '8px',
+                            backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                            marginRight: '30px',
+                            color: appConfig.theme.colors.neutrals[200],
+                        }}
+                        buttonColors={{
+                            mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
+                        }}
+                        
+                    />
             </Box>
         </>
     )
@@ -173,8 +184,9 @@ function MessageList(props) {
                             borderRadius: '5px',
                             padding: '6px',
                             marginBottom: '12px',
+                            wordWrap: 'word-brek',
                             hover: {
-                                backgroundColor: appConfig.theme.colors.neutrals[700],
+                                backgroundColor: appConfig.theme.colors.transparente.fundo,
                             }
                         }}
                     >
@@ -191,11 +203,13 @@ function MessageList(props) {
                                     display: 'inline-block',
                                     marginRight: '8px',
                                 }}
-                                src={`https://github.com/developerLuciaH.png`}
+                                src={`https://github.com/${mensagem.from}.png`}
                             />
+
                             <Text tag="strong">
                                 {mensagem.from}
                             </Text>
+
                             <Text
                                 styleSheet={{
                                     fontSize: '10px',

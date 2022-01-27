@@ -48,8 +48,8 @@ export default function PaginaInicial() {
           <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            //backgroundImage: 'url(/img/AsuiTsuyu.png)',
-            backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
+            backgroundImage: 'url(/img/gwen.png)',
+            //backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
         >
@@ -62,7 +62,7 @@ export default function PaginaInicial() {
                 xs: 'column',
                 sm: 'row',
               },
-              width: '100%', maxWidth: '500px',
+              width: '100%', maxWidth: '700px',
               borderRadius: '5px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
               backgroundColor: appConfig.theme.colors.transparente.fundo,
@@ -82,7 +82,7 @@ export default function PaginaInicial() {
               }}
             >
               <Titulo tag="h2">Seja bem-vindo mais uma vez!</Titulo>
-              <Text variant="body" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[200] }}>
+              <Text variant="body2" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals['000'] }}>
                 {appConfig.name}
               </Text>
 
@@ -100,10 +100,12 @@ export default function PaginaInicial() {
                 fullWidth
                 textFieldColors={{
                   neutral: {
-                    textColor: appConfig.theme.colors.neutrals[800],
+                    textColor: appConfig.theme.colors.neutrals[200],
                     mainColor: appConfig.theme.colors.neutrals[900],
-                    mainColorHighlight: appConfig.theme.colors.primary[600],
-                    backgroundColor: appConfig.theme.colors.neutrals[200],
+                    mainColorHighlight: appConfig.theme.colors.transparente.buttonBlue,
+                    backgroundColor: appConfig.theme.colors.transparente.fundo,
+                    //mainColorHighlight: appConfig.theme.colors.primary[600],
+                   // backgroundColor: appConfig.theme.colors.neutrals[200],
                   },
                 }}
               />
@@ -114,9 +116,12 @@ export default function PaginaInicial() {
                 fullWidth
                 buttonColors={{
                   contrastColor: appConfig.theme.colors.neutrals["000"],
-                  mainColor: appConfig.theme.colors.primary[950],
-                  mainColorLight: appConfig.theme.colors.primary[950],
-                  mainColorStrong: appConfig.theme.colors.primary[650],
+                  //mainColor: appConfig.theme.colors.primary[950],
+                 // mainColorLight: appConfig.theme.colors.primary[950],
+                  //mainColorStrong: appConfig.theme.colors.primary[650],
+                  mainColor: appConfig.theme.colors.transparente.buttonBlue,
+                  mainColorLight: appConfig.theme.colors.primary[400],
+                  mainColorStrong: appConfig.theme.colors.transparente.buttonBlack,
                 }}
               />
             </Box>
@@ -139,7 +144,7 @@ export default function PaginaInicial() {
                 styleSheet={{
                   borderRadius: '50%',
                   marginBottom: '16px',
-                  //boxShadow: '0 0 5px 0 #fff',
+                 boxShadow: '0 0 15px 0 #000',
                 }}
 
                 src={username.length > 2 ? `https://github.com/${username}.png` : `/img/github.png`}
@@ -149,12 +154,13 @@ export default function PaginaInicial() {
               <a
                   href={`https://github.com/${username}`}
                   target={'_blank'}
+                  
               >    
 
                 <Text
-                  variant="body4"
+                  variant="body3"
                   styleSheet={{
-                    color: appConfig.theme.colors.neutrals[800],
+                    color: appConfig.theme.colors.neutrals['000'],
                     fontSize: '16px',  
                     padding: '3px 10px',               
                   }}
