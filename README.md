@@ -1,17 +1,17 @@
-## aluracord-matrix
+## Aluracord-Matrix - REACT
 
 Projeto desenvolvido durante a Imersão React da Alura
+<br />
+https://vercel.com/developerluciah/aluracord-matrix
+<br />
 
-<a href="https://aluracord-matrix-40pon4egc-developer-fernanda.vercel.app/">Clique para visualizar</a>
-
-
-
-
-- Imagem 1
-![Miranha](https://github.com/developer-fernanda/aluracord-matrix/blob/master/img/1.png)
-
-- Imagem 2
-![Miranha](https://github.com/developer-fernanda/aluracord-matrix/blob/master/img/2.png)
-
-- Imagem 3 <br>
-![Miranha](https://github.com/developer-fernanda/aluracord-matrix/blob/master/img/3.png)
+<h3>IMAGENS DO PROJETO</h3>
+<br />
+<h4> Tela de Computador </h4>
+<img src="img/img1.jpeg" alt="">
+<br />
+<h4> Tela de Tablet </h4>
+<img src="img/img2.jpeg" alt="">
+<br />
+<h4> Tela de Mobile </h4>
+<img src="img/img3.jpeg" alt="">
