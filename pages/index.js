@@ -87,6 +87,7 @@ export default function PaginaInicial() {
               </Text>
 
               <TextField
+                placeholder="Digite seu usuário"
                 value={username}
                 onChange={function (event){
                   console.log('usuario digitou', event.target.value);
