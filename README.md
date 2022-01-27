@@ -8,10 +8,10 @@ https://vercel.com/developerluciah/aluracord-matrix
 <h3>IMAGENS DO PROJETO</h3>
 <br />
 <h4> Tela de Computador </h4>
-<img src="img/img1.jpeg" alt="">
+<img src="public/img/img1.jpeg" alt="">
 <br />
 <h4> Tela de Tablet </h4>
-<img src="img/img2.jpeg" alt="">
+<img src="public/img/img2.jpeg" alt="">
 <br />
 <h4> Tela de Mobile </h4>
-<img src="img/img3.jpeg" alt="">
+<img src="public/img/img3.jpeg" alt="">

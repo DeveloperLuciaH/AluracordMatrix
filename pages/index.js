@@ -40,13 +40,15 @@ export default function PaginaInicial() {
     //const username = 'developerLuciaH';
     const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
-   
-      
+          
     return (
+      
       <>
+      
           <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
+            //backgroundImage: 'url(/img/AsuiTsuyu.png)',
             backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
@@ -92,6 +94,7 @@ export default function PaginaInicial() {
                   const valor = event.target.value;
                   //Trocar o valor da variável através do React e avise quem precisa
                   setUsername(valor);
+                  
                 }}              
                 fullWidth
                 textFieldColors={{
@@ -135,12 +138,12 @@ export default function PaginaInicial() {
                 styleSheet={{
                   borderRadius: '50%',
                   marginBottom: '16px',
-                  boxShadow: '0 0 5px 0 #fff',
+                  //boxShadow: '0 0 5px 0 #fff',
                 }}
 
-                src={`https://github.com/${username}.png`}
+                src={username.length > 2 ? `https://github.com/${username}.png` : `/img/github.png`}
                
-              />
+              />              
 
               <a
                   href={`https://github.com/${username}`}
