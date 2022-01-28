@@ -89,7 +89,7 @@ export default function ChatPage() {
         <Box
             styleSheet={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                backgroundColor: appConfig.theme.colors.primary[500],
+                //backgroundColor: appConfig.theme.colors.primary[500],
                 backgroundImage: 'url(/img/gwen.png)',
                 //backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
                 backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
@@ -104,7 +104,7 @@ export default function ChatPage() {
                     flex: 1,
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
-                    backgroundColor: appConfig.theme.colors.neutrals[700],
+                    backgroundColor: appConfig.theme.colors.transparente.fundo,
                     height: '100%',
                     maxWidth: '95%',
                     maxHeight: '95vh',
@@ -120,7 +120,7 @@ export default function ChatPage() {
                         display: 'flex',
                         flex: 1,
                         height: '80%',
-                        backgroundColor: appConfig.theme.colors.neutrals[600],
+                        //backgroundColor: appConfig.theme.colors.neutrals[600],
                         flexDirection: 'column',
                         borderRadius: '5px',
                         padding: '16px',
@@ -182,6 +182,10 @@ export default function ChatPage() {
                             styleSheet={{
                                 borderRadius: '5px',
                                 backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
+                                    color:'black'
+                                },
                                 marginLeft: '1px',
                                 padding: '12px 29px',
                                 color: appConfig.theme.colors.neutrals[200],
@@ -221,12 +225,17 @@ function Header() {
                         borderRadius: '5px',
                         // padding: '8px',
                         backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
-                        marginRight: '30px',
+                        marginRight: '10px',
                         color: appConfig.theme.colors.neutrals[200],
+                        hover: {
+                            backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
+                            color:'black'
+                        }
                     }}
                     buttonColors={{
                         mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
                     }}
+                    
 
                 />
             </Box>

@@ -19,6 +19,7 @@ export function ButtonSendSticker(props) {
           minHeight: '50px',
           fontSize: '20px',
           marginBottom: '8px',
+          marginRight: '5px',
           lineHeight: '0',
           display: 'flex',
           alignItems: 'center',
