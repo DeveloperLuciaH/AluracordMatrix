@@ -2,6 +2,8 @@ import { Box, Button, Text, TextField, Image } from '@skynexui/components';
 import React from 'react';
 import {useRouter} from 'next/router';
 import appConfig from '../config.json';
+import { DiReact } from "react-icons/di";
+
 
 //Componente React
 //Função recebe um argumento/propriedade
@@ -81,9 +83,10 @@ export default function PaginaInicial() {
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
             >
-              <Titulo tag="h2">Seja bem-vindo mais uma vez!</Titulo>
+              <Titulo tag="h2">Seja bem-vindo mais uma vez! </Titulo>
               <Text variant="body2" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals['000'] }}>
-                {appConfig.name}
+              { < DiReact /> } {appConfig.name}                  
+               
               </Text>
 
               <TextField
