@@ -1,11 +1,11 @@
 import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
-
+import { useRouter } from 'next/router';
 import { BiSend } from 'react-icons/bi';
 import { MdLogout } from 'react-icons/md';
 import { BiCool } from "react-icons/bi";
-
+import { ButtonSendSticker } from "../src/components/ButtonSendSticker"
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMyNDU2OCwiZXhwIjoxOTU4OTAwNTY4fQ.JymWTWhqavsTnjJG2ZbTaWYrPZAC37mYcAUL1Xo-1Ig';
@@ -20,9 +20,16 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function ChatPage() {
 
+    const roteamento = useRouter();
+    const usuarioLogado = roteamento.query.username;
     const [mensagem, setMensagem] = React.useState('');
-    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
-
+    const [listaDeMensagens, setListaDeMensagens] = React.useState([
+        // {
+        //     id: 1,
+        //     de: 'developerLuciaH',
+        //     texto: ':sticker: "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_30.png"'
+        // }
+    ]);
 
     // ##### LÓGICA - USUÁRIO #####
     // Usuário digita no text area;
@@ -55,7 +62,7 @@ export default function ChatPage() {
         // a mensagem deixou de ser apenas uma string.
         const mensagem = {
             // id: listaDeMensagens.length + 1,
-            de: 'developerLuciaH',
+            de: usuarioLogado,
             texto: novaMensagem,
         };
 
@@ -166,6 +173,8 @@ export default function ChatPage() {
                             }}
                         />
 
+                        < ButtonSendSticker />
+
                         <Button
                             variant='tertiary'
                             label={< BiSend />}
@@ -174,8 +183,7 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
                                 marginLeft: '1px',
-                                marginRight:'25px',
-                                marginBottom: '15px',                             
+                                padding: '12px 29px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                             buttonColors={{
@@ -189,111 +197,119 @@ export default function ChatPage() {
                                 }
                             }}
 
-                        /> 
+                        />
                     </Box>
                 </Box>
-                </Box>
             </Box>
+        </Box>
     )
 }
 
 function Header() {
     return (
-            <>
-                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-                    <Text variant='heading5'>
-                        KikMeinCord {< BiCool />} Chat
+        <>
+            <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+                <Text variant='heading5'>
+                    KikMeinCord {< BiCool />} Chat
 
                 </Text>
-                    <Button
-                        variant='tertiary'
-                        label={< MdLogout />}
-                        href="/"
-                        styleSheet={{
-                            borderRadius: '5px',
-                            // padding: '8px',
-                            backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
-                            marginRight: '30px',
-                            color: appConfig.theme.colors.neutrals[200],
-                        }}
-                        buttonColors={{
-                            mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
-                        }}
+                <Button
+                    variant='tertiary'
+                    label={< MdLogout />}
+                    href="/"
+                    styleSheet={{
+                        borderRadius: '5px',
+                        // padding: '8px',
+                        backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                        marginRight: '30px',
+                        color: appConfig.theme.colors.neutrals[200],
+                    }}
+                    buttonColors={{
+                        mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
+                    }}
 
-                    />
-                </Box>
-            </>
+                />
+            </Box>
+        </>
     )
 }
 
 function MessageList(props) {
-                console.log(props);
+    console.log(props);
     return (
-            <Box
-                tag="ul"
-                styleSheet={{
-                    overflowY: 'scroll',
-                    display: 'flex',
-                    flexDirection: 'column-reverse',
-                    flex: 1,
-                    color: appConfig.theme.colors.neutrals["000"],
-                    marginBottom: '16px',
-                }}
-            >
-                {props.mensagens.map((mensagem) => {
-                    return (
-                        <Text
-                            key={mensagem.id}
-                            tag="li"
+        <Box
+            tag="ul"
+            styleSheet={{
+                overflowY: 'scroll',
+                display: 'flex',
+                flexDirection: 'column-reverse',
+                flex: 1,
+                color: appConfig.theme.colors.neutrals["000"],
+                marginBottom: '16px',
+            }}
+        >
+            {props.mensagens.map((mensagem) => {
+                return (
+                    <Text
+                        key={mensagem.id}
+                        tag="li"
+                        styleSheet={{
+                            borderRadius: '5px',
+                            padding: '6px',
+                            marginBottom: '12px',
+                            wordWrap: 'word-brek',
+                            hover: {
+                                backgroundColor: appConfig.theme.colors.transparente.fundo,
+                            }
+                        }}
+                    >
+                        <Box
                             styleSheet={{
-                                borderRadius: '5px',
-                                padding: '6px',
-                                marginBottom: '12px',
-                                wordWrap: 'word-brek',
-                                hover: {
-                                    backgroundColor: appConfig.theme.colors.transparente.fundo,
-                                }
+                                marginBottom: '8px',
                             }}
                         >
-                            <Box
+                            <Image
                                 styleSheet={{
-                                    marginBottom: '8px',
+                                    width: '20px',
+                                    height: '20px',
+                                    borderRadius: '50%',
+                                    display: 'inline-block',
+                                    marginRight: '8px',
                                 }}
+                                src={`https://github.com/${mensagem.de}.png`}
+                            />
+
+                            <Text tag="strong">
+                                {mensagem.de}
+                            </Text>
+
+                            <Text
+                                styleSheet={{
+                                    fontSize: '10px',
+                                    marginLeft: '8px',
+                                    color: appConfig.theme.colors.neutrals[300],
+                                }}
+                                tag="span"
                             >
-                                <Image
-                                    styleSheet={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '50%',
-                                        display: 'inline-block',
-                                        marginRight: '8px',
-                                    }}
-                                    src={`https://github.com/${mensagem.de}.png`}
-                                />
+                                {(new Date().toLocaleDateString())}
+                            </Text>
+                        </Box>
 
-                                <Text tag="strong">
-                                    {mensagem.de}
-                                </Text>
+                        {/* Condição tenária, substituindo um if */}
+                        {mensagem.texto.startsWith(':sticker:')
+                            ? (
+                                <Image src={mensagem.texto.replace(':sticker:', '')} />
+                            )
+                            : (
+                                mensagem.texto
+                            )}
+                    </Text>
 
-                                <Text
-                                    styleSheet={{
-                                        fontSize: '10px',
-                                        marginLeft: '8px',
-                                        color: appConfig.theme.colors.neutrals[300],
-                                    }}
-                                    tag="span"
-                                >
-                                    {(new Date().toLocaleDateString())}
-                                </Text>
-                            </Box>
-                            {mensagem.texto}
-                        </Text>
-
-                    );
-                })}
+                );
+            })}
 
 
 
-            </Box>
+        </Box>
     )
 }
