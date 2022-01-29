@@ -1,8 +1,11 @@
-## Aluracord-Matrix - REACT
-
-Projeto desenvolvido durante a Imersão React da Alura
+# Aluracord-Matrix - REACT
+# Projeto desenvolvido durante a Imersão React da Alura
+### Dedicado ao meu filho Henrique, autor da releitura do desenho Gwen. Sigam o seu Instagram para acompanhar suas Digital Arts: @kik.mein
+<br />
 <br />
 https://vercel.com/developerluciah/aluracord-matrix
+https://aluracord-matrix-olive-one.vercel.app/
+
 <br />
 
 <h3>IMAGENS DO PROJETO</h3>
@@ -17,6 +20,6 @@ https://vercel.com/developerluciah/aluracord-matrix
 <img src="public/img/img3.jpeg" alt="">
 <br />
 <h4> Tela de Chat </h4>
-<img src="public/img/img5.jpeg" alt="">
+<img src="public/img/img6.jpeg" alt="">
 
 
