@@ -19,15 +19,18 @@ export function ButtonSendSticker(props) {
           minHeight: '50px',
           fontSize: '20px',
           marginBottom: '8px',
-          marginRight: '5px',
+          marginRight: '4px',
           lineHeight: '0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.neutrals[300],
-          filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+          backgroundColor: appConfig.theme.colors.transparente.fundo,
           hover: {
-            filter: 'grayscale(0)',
+            backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+            filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+            hover: {
+              filter: 'grayscale(0)',
+            }
           }
         }}
         label="😋"

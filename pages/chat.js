@@ -59,9 +59,9 @@ export default function ChatPage() {
                 setListaDeMensagens(data)
             });
 
-            const subscription = escutaMensagensEmTempoReal((novaMensagem) => {
+        const subscription = escutaMensagensEmTempoReal((novaMensagem) => {
             console.log('Nova Mensagem: ', novaMensagem);
-            console.log('Lista de Mensagens: ' , listaDeMensagens);
+            console.log('Lista de Mensagens: ', listaDeMensagens);
 
             setListaDeMensagens((valorAtualdaLista) => {
                 console.log('Valor Atual da Lista:', valorAtualdaLista);
@@ -71,9 +71,9 @@ export default function ChatPage() {
                 ]
             });
 
-                return () => {
-                    subscription.unsubscribe();
-                }
+            return () => {
+                subscription.unsubscribe();
+            }
         });
     }, []);
 
@@ -234,157 +234,166 @@ export default function ChatPage() {
             </Box>
         </Box>
     )
-}
-
-function Header() {
-    return (
-        <>
-            <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-                <Text variant='heading5'>
-                    KikMeinCord {< BiCool />} Chat
-
-                </Text>
-                <Button
-                    variant='tertiary'
-                    label={< MdLogout />}
-                    href="/"
-                    styleSheet={{
-                        borderRadius: '5px',
-                        // padding: '8px',
-                        backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
-                        marginRight: '10px',
-                        color: appConfig.theme.colors.neutrals[200],
-                        hover: {
-                            backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
-                            color: 'black'
-                        }
-                    }}
-                    buttonColors={{
-                        mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
-                    }}
 
 
-                />
-            </Box>
-        </>
-    )
-}
+    function Header() {
+        return (
+            <>
+                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+                    <Text variant='heading5'>
+                        KikMeinCord {< BiCool />} Chat
 
-function MessageList(props) {
-    //console.log(props);
-    return (
-        <Box
-            tag="ul"
-            styleSheet={{
-                overflowY: 'scroll',
-                wordBreak: 'break-word',
-                display: 'flex',
-                flexDirection: 'column-reverse',
-                flex: 1,
-                color: appConfig.theme.colors.neutrals["000"],
-                marginBottom: '1px',
-            }}
-        >
-            {props.mensagens.map((mensagem) => {
-                return (
-                    <Text
-                        key={mensagem.id}
-                        tag="li"
+                    </Text>
+                    <Button
+                        variant='tertiary'
+                        label={< MdLogout />}
+                        href="/"
                         styleSheet={{
                             borderRadius: '5px',
-                            padding: '6px',
-                            marginBottom: '12px',
-                            wordWrap: 'word-brek',
+                            // padding: '8px',
+                            backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                            marginRight: '10px',
+                            color: appConfig.theme.colors.neutrals[200],
                             hover: {
-                                backgroundColor: appConfig.theme.colors.transparente.fundo,
+                                backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+                                color: 'black'
                             }
                         }}
-                    >
-                        <Box
+                        buttonColors={{
+                            mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
+                        }}
+
+
+                    />
+                </Box>
+            </>
+        )
+    }
+
+    function MessageList(props) {
+        //console.log(props);
+        return (
+            <Box
+                tag="ul"
+                styleSheet={{
+                    overflowY: 'scroll',
+                    wordBreak: 'break-word',
+                    display: 'flex',
+                    flexDirection: 'column-reverse',
+                    flex: 1,
+                    color: appConfig.theme.colors.neutrals["000"],
+                    marginBottom: '1px',
+                }}
+            >
+                {props.mensagens.map((mensagem) => {
+                    return (
+                        <Text
+                            key={mensagem.id}
+                            tag="li"
                             styleSheet={{
-                                marginBottom: '3px',
-                                //Display flex
-                                width: '100%',
-                                marginBottom: '16px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between'
+                                borderRadius: '5px',
+                                padding: '6px',
+                                marginBottom: '12px',
+                                wordWrap: 'word-brek',
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.transparente.fundo,
+                                }
                             }}
                         >
-                            <Box>
-                                <Image
-                                    styleSheet={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '50%',
-                                        display: 'inline-block',
-                                        marginRight: '8px',
-                                    }}
-                                    src={`https://github.com/${mensagem.de}.png`}
-                                />
-
-
-                                <Text tag="strong">
-                                    {mensagem.de}
-                                </Text>
-
-                                <Text
-                                    styleSheet={{
-                                        fontSize: '10px',
-                                        marginLeft: '8px',
-                                        color: appConfig.theme.colors.neutrals[300],
-                                    }}
-                                    tag="span"
-                                >
-                                    {(new Date().toLocaleDateString())}
-                                </Text>
-                            </Box>
-                        </Box>
-
-                        { `usuarioLogado === mensagem.de` ?
                             <Box
-                                title={`Apagar mensagem`}
                                 styleSheet={{
-                                    padding: '2px 15px',
-                                    cursor: 'pointer'
-                                }}
-                                onClick={() => {
-
-                                    let resposta = confirm('Deseja remover essa mensagem?')
-                                    if (resposta === true) {
-                                        supabaseClient
-                                            .from('mensagens')
-                                            .delete()
-                                            .match({ id: mensagem.id }).then(() => {
-                                                let indice = listaDeMensagens.indexOf(mensagem);
-                                                //1 parametro: Indice que vou manipular 
-                                                //2 parametro: Quantidade de itens que seram manipulados a partir do primeiro paramentro 
-                                                //3 parametro: Setar oq vc vai colocar no lugar (não obrigatório)
-                                                listaDeMensagens.splice(indice, 1)
-                                                //... juntar um objeto/array com o outro
-                                                setListaMensagens([...listaDeMensagens])
-                                            })
-                                    }
+                                    marginBottom: '3px',
+                                    Display: 'flex',
+                                    width: '100%',
+                                    marginBottom: '16px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between'
                                 }}
                             >
-                                {<RiDeleteBinLine />}
+                                <Box>
+                                    <Image
+                                        styleSheet={{
+                                            width: '20px',
+                                            height: '20px',
+                                            borderRadius: '50%',
+                                            display: 'inline-block',
+                                            marginRight: '8px',
+                                        }}
+                                        src={`https://github.com/${mensagem.de}.png`}
+                                    />
+
+
+                                    <Text tag="strong">
+                                        {mensagem.de}
+                                    </Text>
+
+                                    <Text
+                                        styleSheet={{
+                                            fontSize: '10px',
+                                            marginLeft: '8px',
+                                            color: appConfig.theme.colors.neutrals[300],
+                                        }}
+                                        tag="span"
+                                    >
+                                        {(new Date().toLocaleDateString())}
+                                    </Text>
+                                </Box>
+
+                                {usuarioLogado === mensagem.de ?
+                                    <Box
+                                        title={`Apagar mensagem`}
+                                        styleSheet={{
+                                            padding: '2px 15px',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => {
+
+                                            let resposta = confirm('Deseja remover essa mensagem?')
+                                            if (resposta === true) {
+                                                supabaseClient
+                                                    .from('mensagens')
+                                                    .delete()
+                                                    .match({ id: mensagem.id }).then(() => {
+                                                        let indice = listaDeMensagens.indexOf(mensagem);
+                                                        //1 parametro: Indice que vou manipular 
+                                                        //2 parametro: Quantidade de itens que seram manipulados a partir do primeiro paramentro 
+                                                        //3 parametro: Setar oq vc vai colocar no lugar (não obrigatório)
+                                                        listaDeMensagens.splice(indice, 1)
+                                                        //... juntar um objeto/array com o outro
+                                                        setListaDeMensagens([...listaDeMensagens])
+                                                    })
+                                            }
+                                        }}
+                                    >
+                                        {<RiDeleteBinLine />}
+
+                                    </Box>
+                                    :
+                                    null}
+
                             </Box>
 
-                            :
-                            null}
 
-                        {/* Condição tenária, substituindo um if */}
-                        {mensagem.texto.startsWith(':sticker:')
-                            ? (
-                                <img src={mensagem.texto.replace(':sticker:', '')} />
-                            )
-                            : (
-                                mensagem.texto
-                            )}
-                    </Text>
 
-                );
-            })}
-        </Box>
-    )
+
+                            {/* Condição ternária, substituindo um if */}
+                            {mensagem.texto.startsWith(':sticker:')
+                                ? (
+                                    <img src={mensagem.texto.replace(':sticker:', '')} />
+                                )
+                                : (
+                                    mensagem.texto
+                                )}
+
+
+                        </Text>
+
+                    );
+                })}
+            </Box>
+        )
+    }
+
 }
+
