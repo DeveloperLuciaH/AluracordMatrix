@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { BiSend } from 'react-icons/bi';
 import { MdLogout } from 'react-icons/md';
 import { BiCool } from "react-icons/bi";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker"
 import { createClient } from '@supabase/supabase-js';
 
@@ -18,18 +19,21 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // acessa todas as informações cadastrada no banco de dados via console do navegador
 // substitui fazer todo o fetch via código na programação
 
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaLive) => {
+            adicionaMensagem(respostaLive.new);
+        })
+        .subscribe();
+}
+
 export default function ChatPage() {
 
     const roteamento = useRouter();
     const usuarioLogado = roteamento.query.username;
     const [mensagem, setMensagem] = React.useState('');
-    const [listaDeMensagens, setListaDeMensagens] = React.useState([
-        // {
-        //     id: 1,
-        //     de: 'developerLuciaH',
-        //     texto: ':sticker: "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_30.png"'
-        // }
-    ]);
+    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
 
     // ##### LÓGICA - USUÁRIO #####
     // Usuário digita no text area;
@@ -51,10 +55,27 @@ export default function ChatPage() {
             .select('*')
             .order('id', { ascending: false })
             .then(({ data }) => {
-                console.log('Dados da consulta: ', data);
+                //console.log('Dados da consulta: ', data);
                 setListaDeMensagens(data)
             });
-    }, [])
+
+            const subscription = escutaMensagensEmTempoReal((novaMensagem) => {
+            console.log('Nova Mensagem: ', novaMensagem);
+            console.log('Lista de Mensagens: ' , listaDeMensagens);
+
+            setListaDeMensagens((valorAtualdaLista) => {
+                console.log('Valor Atual da Lista:', valorAtualdaLista);
+                return [
+                    novaMensagem,
+                    ...valorAtualdaLista,
+                ]
+            });
+
+                return () => {
+                    subscription.unsubscribe();
+                }
+        });
+    }, []);
 
 
     function handleNovaMensagem(novaMensagem) {
@@ -76,12 +97,10 @@ export default function ChatPage() {
             ])
             .then(({ data }) => {
                 console.log('Criando mensagem: ', data);
-                setListaDeMensagens([
-                    data[0],
-                    ...listaDeMensagens,
-                ]);
-                setMensagem('');
+
             });
+
+        setMensagem('');
     }
 
     return (
@@ -173,7 +192,14 @@ export default function ChatPage() {
                             }}
                         />
 
-                        < ButtonSendSticker />
+                        < ButtonSendSticker
+                            onStickerClick={(sticker) => {
+                                //console.log('[USANDO O COMPONENTE] Salva este sticker no banco', sticker);
+                                handleNovaMensagem(':sticker: ' + sticker);
+
+                            }}
+
+                        />
 
                         <Button
                             variant='tertiary'
@@ -183,8 +209,8 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
                                 hover: {
-                                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
-                                    color:'black'
+                                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+                                    color: 'black'
                                 },
                                 marginLeft: '1px',
                                 padding: '12px 29px',
@@ -202,6 +228,7 @@ export default function ChatPage() {
                             }}
 
                         />
+
                     </Box>
                 </Box>
             </Box>
@@ -228,14 +255,14 @@ function Header() {
                         marginRight: '10px',
                         color: appConfig.theme.colors.neutrals[200],
                         hover: {
-                            backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
-                            color:'black'
+                            backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+                            color: 'black'
                         }
                     }}
                     buttonColors={{
                         mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
                     }}
-                    
+
 
                 />
             </Box>
@@ -244,17 +271,18 @@ function Header() {
 }
 
 function MessageList(props) {
-    console.log(props);
+    //console.log(props);
     return (
         <Box
             tag="ul"
             styleSheet={{
                 overflowY: 'scroll',
+                wordBreak: 'break-word',
                 display: 'flex',
                 flexDirection: 'column-reverse',
                 flex: 1,
                 color: appConfig.theme.colors.neutrals["000"],
-                marginBottom: '16px',
+                marginBottom: '1px',
             }}
         >
             {props.mensagens.map((mensagem) => {
@@ -274,40 +302,81 @@ function MessageList(props) {
                     >
                         <Box
                             styleSheet={{
-                                marginBottom: '8px',
+                                marginBottom: '3px',
+                                //Display flex
+                                width: '100%',
+                                marginBottom: '16px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between'
                             }}
                         >
-                            <Image
-                                styleSheet={{
-                                    width: '20px',
-                                    height: '20px',
-                                    borderRadius: '50%',
-                                    display: 'inline-block',
-                                    marginRight: '8px',
-                                }}
-                                src={`https://github.com/${mensagem.de}.png`}
-                            />
+                            <Box>
+                                <Image
+                                    styleSheet={{
+                                        width: '20px',
+                                        height: '20px',
+                                        borderRadius: '50%',
+                                        display: 'inline-block',
+                                        marginRight: '8px',
+                                    }}
+                                    src={`https://github.com/${mensagem.de}.png`}
+                                />
 
-                            <Text tag="strong">
-                                {mensagem.de}
-                            </Text>
 
-                            <Text
-                                styleSheet={{
-                                    fontSize: '10px',
-                                    marginLeft: '8px',
-                                    color: appConfig.theme.colors.neutrals[300],
-                                }}
-                                tag="span"
-                            >
-                                {(new Date().toLocaleDateString())}
-                            </Text>
+                                <Text tag="strong">
+                                    {mensagem.de}
+                                </Text>
+
+                                <Text
+                                    styleSheet={{
+                                        fontSize: '10px',
+                                        marginLeft: '8px',
+                                        color: appConfig.theme.colors.neutrals[300],
+                                    }}
+                                    tag="span"
+                                >
+                                    {(new Date().toLocaleDateString())}
+                                </Text>
+                            </Box>
                         </Box>
+
+                        { `usuarioLogado === mensagem.de` ?
+                            <Box
+                                title={`Apagar mensagem`}
+                                styleSheet={{
+                                    padding: '2px 15px',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={() => {
+
+                                    let resposta = confirm('Deseja remover essa mensagem?')
+                                    if (resposta === true) {
+                                        supabaseClient
+                                            .from('mensagens')
+                                            .delete()
+                                            .match({ id: mensagem.id }).then(() => {
+                                                let indice = listaDeMensagens.indexOf(mensagem);
+                                                //1 parametro: Indice que vou manipular 
+                                                //2 parametro: Quantidade de itens que seram manipulados a partir do primeiro paramentro 
+                                                //3 parametro: Setar oq vc vai colocar no lugar (não obrigatório)
+                                                listaDeMensagens.splice(indice, 1)
+                                                //... juntar um objeto/array com o outro
+                                                setListaMensagens([...listaDeMensagens])
+                                            })
+                                    }
+                                }}
+                            >
+                                {<RiDeleteBinLine />}
+                            </Box>
+
+                            :
+                            null}
 
                         {/* Condição tenária, substituindo um if */}
                         {mensagem.texto.startsWith(':sticker:')
                             ? (
-                                <Image src={mensagem.texto.replace(':sticker:', '')} />
+                                <img src={mensagem.texto.replace(':sticker:', '')} />
                             )
                             : (
                                 mensagem.texto
@@ -316,9 +385,6 @@ function MessageList(props) {
 
                 );
             })}
-
-
-
         </Box>
     )
 }

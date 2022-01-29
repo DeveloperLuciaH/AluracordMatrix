@@ -42,11 +42,11 @@ export default function PaginaInicial() {
     //const username = 'developerLuciaH';
     const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
+    const imagemInicial = './img/github.png';
           
     return (
       
-      <>
-      
+      <>      
           <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -67,7 +67,7 @@ export default function PaginaInicial() {
               width: '100%', maxWidth: '700px',
               borderRadius: '5px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-              backgroundColor: appConfig.theme.colors.transparente.fundo,
+              backgroundColor: appConfig.theme.colors.transparente.fundo1,
             }}
           >
             {/* Formulário */}
@@ -83,7 +83,7 @@ export default function PaginaInicial() {
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
             >
-              <Titulo tag="h2">Seja bem-vindo mais uma vez! </Titulo>
+              <Titulo tag="h2">Sejam bem-vindos mais uma vez! </Titulo>
               <Text variant="body2" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals['000'] }}>
               { < DiReact /> } {appConfig.name}                  
                
@@ -137,8 +137,8 @@ export default function PaginaInicial() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                maxWidth: '200px',
-                padding: '15px',
+                maxWidth: '250px',
+                padding: '16px',
                 flex: 1,
                 minHeight: '240px',
               }}
@@ -147,10 +147,14 @@ export default function PaginaInicial() {
                 styleSheet={{
                   borderRadius: '50%',
                   marginBottom: '16px',
-                 boxShadow: '0 0 15px 0 #000',
+                  boxShadow: '0 0 15px 0 #000',
                 }}
 
-                src={username.length > 2 ? `https://github.com/${username}.png` : `/img/github.png`}
+                onError={function(event){
+                  event.target.src = imagemInicial
+                }}
+
+                src={username.length > 2 ? `https://github.com/${username}.png` : imagemInicial}
                
               />              
 

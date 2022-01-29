@@ -35,7 +35,8 @@
             },
            
             "transparente":{
-                "fundo": "rgba(0, 0, 0, 0.5)",
+                "fundo": "rgba(0, 0, 0, 0.8)",
+                "fundo1": "rgba(0, 0, 0, 0.6)",                
                 "buttonBlue": "#87CEEB",
                 "buttonBlack": "#1C1C1C"
             }

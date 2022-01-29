@@ -13,10 +13,10 @@ https://vercel.com/developerluciah/aluracord-matrix
 <h4> Tela de Tablet </h4>
 <img src="public/img/img2.jpeg" alt="">
 <br />
-<h4> Tela de Mobile </h4>
+<h4> Tela de Mobile  Foto Padrão antes do Submit </h4>
 <img src="public/img/img3.jpeg" alt="">
 <br />
-<h4> Tela de Mobile Foto Padrão antes do Submit </h4>
-<img src="public/img/img4.jpeg" alt="">
+<h4> Tela de Chat </h4>
+<img src="public/img/img5.jpeg" alt="">
 
 
