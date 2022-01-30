@@ -13,13 +13,14 @@ export function ButtonSendSticker(props) {
     >
       <Button
         styleSheet={{
-          borderRadius: '50%',
-          padding: '0 3px 0 0',
-          minWidth: '50px',
-          minHeight: '50px',
+          //borderRadius: '50%',
+          //padding: '0 3px 0 0',
+          minWidth: '42px',
+          minHeight: '42px',
           fontSize: '20px',
-          marginBottom: '8px',
-          marginRight: '4px',
+          marginBottom: '7px',
+          marginLeft: '0px',
+          marginRight: '7px',
           lineHeight: '0',
           display: 'flex',
           alignItems: 'center',
@@ -27,13 +28,15 @@ export function ButtonSendSticker(props) {
           backgroundColor: appConfig.theme.colors.transparente.fundo,
           hover: {
             backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
-            filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
-            hover: {
-              filter: 'grayscale(0)',
+            //filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+            // hover: {
+            //   filter: 'grayscale(0)',
+            focus: {
+              backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
             }
-          }
-        }}
-        label="😋"
+            }
+          }}
+        label="🎨"
         onClick={() => setOpenState(!isOpen)}
       />
       {isOpen && (
@@ -43,14 +46,14 @@ export function ButtonSendSticker(props) {
             flexDirection: 'column',
             borderRadius: '5px',
             position: 'absolute',
-            backgroundColor: appConfig.theme.colors.neutrals[800],
+            backgroundColor: appConfig.theme.colors.transparente.fundo1,
             width: {
               xs: '200px',
               sm: '290px',
             },
             height: '300px',
-            right: '30px',
-            bottom: '30px',
+            right: '0px',
+            bottom: '50px',
             padding: '16px',
             boxShadow: 'rgba(4, 4, 5, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.24) 0px 8px 16px 0px',
           }}
@@ -59,7 +62,7 @@ export function ButtonSendSticker(props) {
           <Text
             styleSheet={{
               color: appConfig.theme.colors.neutrals["000"],
-              fontWeight: 'bold',
+              //fontWeight: 'bold',
             }}
           >
             Stickers
@@ -85,14 +88,14 @@ export function ButtonSendSticker(props) {
                 }}
                 tag="li" key={sticker}
                 styleSheet={{
-                  width: '50%',
-                  borderRadius: '5px',
+                  width: '30%',
+                  borderRadius: '3px',
                   padding: '10px',
                   focus: {
-                    backgroundColor: appConfig.theme.colors.neutrals[600],
+                    backgroundColor: appConfig.theme.colors.transparente.fundo1,
                   },
                   hover: {
-                    backgroundColor: appConfig.theme.colors.neutrals[600],
+                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
                   }
                 }}
               >

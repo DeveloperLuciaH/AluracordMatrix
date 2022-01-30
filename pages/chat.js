@@ -207,14 +207,19 @@ export default function ChatPage() {
                             type='submit'
                             styleSheet={{
                                 borderRadius: '5px',
-                                backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                                minWidth: '42px',
+                                minHeight: '42px',
+                                marginBottom:'14px',
+                                marginTop:'7px',
+                                backgroundColor: appConfig.theme.colors.transparente.fundo,
+                                color: appConfig.theme.colors.neutrals[200],
                                 hover: {
                                     backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
                                     color: 'black'
                                 },
-                                marginLeft: '1px',
-                                padding: '12px 29px',
-                                color: appConfig.theme.colors.neutrals[200],
+                                //marginLeft: '1px',
+                                //padding: '8px 19px',
+                                //color: appConfig.theme.colors.neutrals[200],
                             }}
                             buttonColors={{
                                 mainColorLight: appConfig.theme.colors.transparente.buttonBlue,
@@ -251,7 +256,7 @@ export default function ChatPage() {
                         styleSheet={{
                             borderRadius: '5px',
                             // padding: '8px',
-                            backgroundColor: appConfig.theme.colors.transparente.buttonBlack,
+                            backgroundColor: appConfig.theme.colors.transparente.fundo,
                             marginRight: '10px',
                             color: appConfig.theme.colors.neutrals[200],
                             hover: {
@@ -293,7 +298,7 @@ export default function ChatPage() {
                             styleSheet={{
                                 borderRadius: '5px',
                                 padding: '6px',
-                                marginBottom: '12px',
+                                marginBottom: '5px',
                                 wordWrap: 'word-brek',
                                 hover: {
                                     backgroundColor: appConfig.theme.colors.transparente.fundo,
@@ -305,7 +310,7 @@ export default function ChatPage() {
                                     marginBottom: '3px',
                                     Display: 'flex',
                                     width: '100%',
-                                    marginBottom: '16px',
+                                    marginBottom: '10px',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'space-between'
@@ -318,7 +323,12 @@ export default function ChatPage() {
                                             height: '20px',
                                             borderRadius: '50%',
                                             display: 'inline-block',
-                                            marginRight: '8px',
+                                            marginRight: '8px',                                            
+                                            //transform: 'scale(2.2)'
+                                        }}
+
+                                        onError={(event) => {
+                                            event.target.src = appConfig.userImageDefault
                                         }}
                                         src={`https://github.com/${mensagem.de}.png`}
                                     />
@@ -380,7 +390,11 @@ export default function ChatPage() {
                             {/* Condição ternária, substituindo um if */}
                             {mensagem.texto.startsWith(':sticker:')
                                 ? (
-                                    <img src={mensagem.texto.replace(':sticker:', '')} />
+                                    <img src={mensagem.texto.replace(':sticker:', '')} 
+                                    styleSheet={{
+                                        width: '150px',                                        
+                                    }}
+                                    />
                                 )
                                 : (
                                     mensagem.texto

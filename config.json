@@ -36,7 +36,7 @@
            
             "transparente":{
                 "fundo": "rgba(0, 0, 0, 0.8)",
-                "fundo1": "rgba(0, 0, 0, 0.6)",                
+                "fundo1": "rgba(0, 0, 0, 0.6)",                               
                 "buttonBlue": "#87CEEB",
                 "buttonBlack": "#1C1C1C"
             }
@@ -44,6 +44,17 @@
         }
     },
     "stickers": [
+        "/img/sticker1.png",  
+        "/img/sticker2.png", 
+        "/img/sticker3.png", 
+        "/img/sticker4.png", 
+        "/img/sticker5.png", 
+        "/img/sticker6.png",  
+        "/img/sticker7.png",
+        "/img/sticker8.png",
+        "/img/sticker9.png",
+        "/img/sticker10.png",
+
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_2.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png",
