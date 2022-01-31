@@ -27,8 +27,8 @@ export function ButtonSendSticker(props) {
           justifyContent: 'center',
           backgroundColor: appConfig.theme.colors.transparente.fundo,
           hover: {
-            backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
-            //filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+            backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
+            // filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
             // hover: {
             //   filter: 'grayscale(0)',
             focus: {
@@ -58,6 +58,7 @@ export function ButtonSendSticker(props) {
             boxShadow: 'rgba(4, 4, 5, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.24) 0px 8px 16px 0px',
           }}
           onClick={() => setOpenState(false)}
+          
         >
           <Text
             styleSheet={{
@@ -75,7 +76,7 @@ export function ButtonSendSticker(props) {
               justifyContent: 'space-between',
               flex: 1,
               paddingTop: '16px',
-              overflow: 'scroll',
+              overflowY: 'scroll',
             }}
           >
             {appConfig.stickers.map((sticker) => (

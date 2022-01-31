@@ -1,6 +1,7 @@
 import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router';
 import { BiSend } from 'react-icons/bi';
 import { MdLogout } from 'react-icons/md';
@@ -33,7 +34,8 @@ export default function ChatPage() {
     const roteamento = useRouter();
     const usuarioLogado = roteamento.query.username;
     const [mensagem, setMensagem] = React.useState('');
-    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);    
+
 
     // ##### LÓGICA - USUÁRIO #####
     // Usuário digita no text area;
@@ -81,7 +83,7 @@ export default function ChatPage() {
         });
         
     }, []);
-
+    
 
     function handleNovaMensagem(novaMensagem) {
         // se tornou objeto para pegar múltiplas informações. 
@@ -89,7 +91,7 @@ export default function ChatPage() {
         const mensagem = {
             // id: listaDeMensagens.length + 1,
             de: usuarioLogado,
-            texto: novaMensagem,
+            texto: novaMensagem,           
         };
 
         // chamada de um backend
@@ -187,11 +189,13 @@ export default function ChatPage() {
                             type="textarea"
                             styleSheet={{
                                 width: '100%',
+                                height: '44px',
                                 border: '0',
                                 resize: 'none',
                                 borderRadius: '5px',
-                                padding: '6px 8px',
+                                //padding: '6px 8px',
                                 backgroundColor: appConfig.theme.colors.transparente.fundo,
+                                marginLeft: '30px',
                                 marginRight: '12px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
@@ -302,7 +306,7 @@ export default function ChatPage() {
                             tag="li"
                             styleSheet={{
                                 borderRadius: '5px',
-                                padding: '6px',
+                                padding: '3px',
                                 marginBottom: '5px',
                                 wordWrap: 'word-brek',
                                 hover: {
@@ -329,7 +333,7 @@ export default function ChatPage() {
                                             borderRadius: '50%',
                                             display: 'inline-block',
                                             marginRight: '8px',                                            
-                                            //transform: 'scale(2.2)'
+                                            transform: 'scale(1.2)'
                                         }}
 
                                         onError={(event) => {

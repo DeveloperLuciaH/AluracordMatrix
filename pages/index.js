@@ -42,7 +42,7 @@ export default function PaginaInicial() {
     //const username = 'developerLuciaH';
     const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
-    const imagemInicial = './img/github.png';
+    const imagemInicial = './img/gwenGif.gif';
           
     return (
       
@@ -51,7 +51,6 @@ export default function PaginaInicial() {
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             backgroundImage: 'url(/img/gwen.png)',
-            //backgroundImage: 'url(https://images.hdqwalls.com/wallpapers/peace-of-mind.jpg)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
         >
@@ -90,7 +89,7 @@ export default function PaginaInicial() {
               </Text>
 
               <TextField
-                placeholder="Digite seu usuário"
+                placeholder="Digite seu usuário GitHub"
                 value={username}
                 onChange={function (event){
                   console.log('usuario digitou', event.target.value);

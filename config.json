@@ -48,7 +48,9 @@
     "sound": "./sound/sound.mp3",
 
     "stickers": [
+        "/img/gwenGif.gif",
         "/img/sticker1.png",  
+        "/img/sticker11.png",
         "/img/sticker2.png", 
         "/img/sticker3.png", 
         "/img/sticker4.png", 
@@ -58,7 +60,7 @@
         "/img/sticker8.png",
         "/img/sticker9.png",
         "/img/sticker10.png",
-
+       
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_1.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_2.png",
         "https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png",
