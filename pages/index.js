@@ -42,7 +42,7 @@ export default function PaginaInicial() {
     //const username = 'developerLuciaH';
     const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
-    const imagemInicial = './img/gwenGif.gif';
+    const imagemInicial = './img/github.png';
           
     return (
       
