@@ -43,6 +43,10 @@
             
         }
     },
+
+    "userImageDefault": "./img/github.png",
+    "sound": "./sound/sound.mp3",
+
     "stickers": [
         "/img/sticker1.png",  
         "/img/sticker2.png", 

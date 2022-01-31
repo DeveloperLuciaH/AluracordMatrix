@@ -62,6 +62,10 @@ export default function ChatPage() {
         const subscription = escutaMensagensEmTempoReal((novaMensagem) => {
             console.log('Nova Mensagem: ', novaMensagem);
             console.log('Lista de Mensagens: ', listaDeMensagens);
+            if(usuarioLogado != novaMensagem.de){
+                let audio = new Audio(appConfig.sound);
+                audio.play();
+            }
 
             setListaDeMensagens((valorAtualdaLista) => {
                 console.log('Valor Atual da Lista:', valorAtualdaLista);
@@ -75,6 +79,7 @@ export default function ChatPage() {
                 subscription.unsubscribe();
             }
         });
+        
     }, []);
 
 
