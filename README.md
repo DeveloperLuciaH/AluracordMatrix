@@ -1,6 +1,7 @@
 # Aluracord-Matrix - REACT
 # 🚀 Projeto desenvolvido durante a Imersão React da Alura
-### Dedicado ao meu filho Henrique, autor da releitura do desenho Gwen. Sigam o seu Instagram para acompanhar suas Digital Arts autorais: @kik.mein 🧑‍🎨
+### Dedicado ao meu filho Henrique, autor da releitura do desenho Gwen. Sigam o seu Instagram para acompanhar suas Digital Arts autorais: @kik.mein 🧑‍🎨 
+### https://www.instagram.com/kik.mein/
 <br />
 <br />
 https://vercel.com/developerluciah/aluracord-matrix
