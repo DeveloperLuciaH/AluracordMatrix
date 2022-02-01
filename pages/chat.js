@@ -61,7 +61,7 @@ export default function ChatPage() {
                 setListaDeMensagens(data)
             });
 
-        const subscription = escutaMensagensEmTempoReal((novaMensagem) => {
+            escutaMensagensEmTempoReal((novaMensagem) => {
             console.log('Nova Mensagem: ', novaMensagem);
             console.log('Lista de Mensagens: ', listaDeMensagens);
             if(usuarioLogado != novaMensagem.de){
@@ -77,9 +77,9 @@ export default function ChatPage() {
                 ]
             });
 
-            return () => {
-                subscription.unsubscribe();
-            }
+            // return () => {
+            //     subscription.unsubscribe();
+            // }
         });
         
     }, []);
@@ -226,6 +226,9 @@ export default function ChatPage() {
                                     backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
                                     color: 'black'
                                 },
+                                focus: {
+                                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+                                }
                                 //marginLeft: '1px',
                                 //padding: '8px 19px',
                                 //color: appConfig.theme.colors.neutrals[200],
@@ -264,6 +267,8 @@ export default function ChatPage() {
                         href="/"
                         styleSheet={{
                             borderRadius: '5px',
+                            minWidth: '42px',
+                            minHeight: '42px',
                             // padding: '8px',
                             backgroundColor: appConfig.theme.colors.transparente.fundo,
                             marginRight: '10px',
@@ -285,7 +290,7 @@ export default function ChatPage() {
     }
 
     function MessageList(props) {
-        //console.log(props);
+        console.log(props);
         return (
             <Box
                 tag="ul"
@@ -306,7 +311,7 @@ export default function ChatPage() {
                             tag="li"
                             styleSheet={{
                                 borderRadius: '5px',
-                                padding: '3px',
+                                padding: '6px',
                                 marginBottom: '5px',
                                 wordWrap: 'word-brek',
                                 hover: {
@@ -317,7 +322,7 @@ export default function ChatPage() {
                             <Box
                                 styleSheet={{
                                     marginBottom: '3px',
-                                    Display: 'flex',
+                                    //Display: 'flex',
                                     width: '100%',
                                     marginBottom: '10px',
                                     display: 'flex',
