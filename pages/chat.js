@@ -186,7 +186,7 @@ export default function ChatPage() {
                                 }
                             }}
 
-                            placeholder="Digite aqui a sua mensagem..."
+                            placeholder="Digite sua mensagem..."
                             type="textarea"
                             styleSheet={{
                                 width: '100%',
