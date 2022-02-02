@@ -49,7 +49,7 @@ export default function PaginaInicial() {
       <>      
           <Box
           styleSheet={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',           
             backgroundImage: 'url(/img/gwen.png)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
