@@ -32,7 +32,7 @@ function Titulo(props){
 //         <div>
 //             <GlobalStyle /> 
 //             <Titulo tag="h2">Bem-vindos de volta!</Titulo>
-//             <h2>Discord Alura - Spider</h2>
+//             <h2>Discord Alura </h2>
 //         </div>
 //     )
 // } 
@@ -66,7 +66,7 @@ export default function PaginaInicial() {
               width: '100%', maxWidth: '700px',
               borderRadius: '5px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-              backgroundColor: appConfig.theme.colors.transparente.fundo1,
+              backgroundColor: appConfig.theme.colors.background.fundoBlack,
             }}
           >
             {/* Formulário */}
@@ -104,8 +104,9 @@ export default function PaginaInicial() {
                   neutral: {
                     textColor: appConfig.theme.colors.neutrals[200],
                     mainColor: appConfig.theme.colors.neutrals[900],
-                    mainColorHighlight: appConfig.theme.colors.transparente.buttonBlue,
-                    backgroundColor: appConfig.theme.colors.transparente.fundo,
+                    mainColorHighlight: appConfig.theme.colors.button.buttonBlue,
+                    backgroundColor: appConfig.theme.colors.background.fundoBlack,
+                    
                     //mainColorHighlight: appConfig.theme.colors.primary[600],
                    // backgroundColor: appConfig.theme.colors.neutrals[200],
                   },
@@ -121,9 +122,9 @@ export default function PaginaInicial() {
                   //mainColor: appConfig.theme.colors.primary[950],
                  // mainColorLight: appConfig.theme.colors.primary[950],
                   //mainColorStrong: appConfig.theme.colors.primary[650],
-                  mainColor: appConfig.theme.colors.transparente.buttonBlue,
+                  mainColor: appConfig.theme.colors.button.buttonBlue,
                   mainColorLight: appConfig.theme.colors.primary[400],
-                  mainColorStrong: appConfig.theme.colors.transparente.buttonBlack,
+                  mainColorStrong: appConfig.theme.colors.button.buttonBlack,
                 }}
               />
             </Box>

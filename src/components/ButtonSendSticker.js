@@ -18,23 +18,23 @@ export function ButtonSendSticker(props) {
           minWidth: '42px',
           minHeight: '42px',
           fontSize: '20px',
-          marginBottom: '7px',
-          marginLeft: '0px',
-          marginRight: '7px',
           lineHeight: '0',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.transparente.fundo,
+          marginLeft: '5px',
+          marginBottom: '7px',          
+          //marginRight: '7px',
+          border: '1px solid #000000',      
+          backgroundColor: appConfig.theme.colors.background.fundoBlack1,
+          filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
           hover: {
-            backgroundColor: appConfig.theme.colors.transparente.buttonBlue, 
-            // filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
-            // hover: {
-            //   filter: 'grayscale(0)',
-            focus: {
-              backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
-            }
-            }
+            backgroundColor: appConfig.theme.colors.background.fundoBlue,
+            border: '1px solid #000000',
+          },
+          focus: {
+            backgroundColor: appConfig.theme.colors.background.fundoBlue,
+          } 
           }}
         label="🎨"
         onClick={() => setOpenState(!isOpen)}
@@ -46,7 +46,7 @@ export function ButtonSendSticker(props) {
             flexDirection: 'column',
             borderRadius: '5px',
             position: 'absolute',
-            backgroundColor: appConfig.theme.colors.transparente.fundo1,
+            backgroundColor: appConfig.theme.colors.background.fundoBlack1,
             width: {
               xs: '200px',
               sm: '290px',
@@ -66,7 +66,7 @@ export function ButtonSendSticker(props) {
               //fontWeight: 'bold',
             }}
           >
-            Stickers
+            Stickers 🎨
           </Text>
           <Box
             tag="ul"
@@ -75,7 +75,7 @@ export function ButtonSendSticker(props) {
               flexWrap: 'wrap',
               justifyContent: 'space-between',
               flex: 1,
-              paddingTop: '16px',
+              paddingTop: '10px',
               overflowY: 'scroll',
             }}
           >
@@ -93,10 +93,10 @@ export function ButtonSendSticker(props) {
                   borderRadius: '3px',
                   padding: '10px',
                   focus: {
-                    backgroundColor: appConfig.theme.colors.transparente.fundo1,
+                    backgroundColor: appConfig.theme.colors.background.fundoBlack,
                   },
                   hover: {
-                    backgroundColor: appConfig.theme.colors.transparente.buttonBlue,
+                    backgroundColor: appConfig.theme.colors.background.fundoBlue,
                   }
                 }}
               >

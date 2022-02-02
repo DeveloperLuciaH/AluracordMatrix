@@ -34,11 +34,16 @@
                 "999": "#080A0C"
             },
            
-            "transparente":{
-                "fundo": "rgba(0, 0, 0, 0.8)",
-                "fundo1": "rgba(0, 0, 0, 0.6)",                               
+            "button":{
                 "buttonBlue": "#87CEEB",
-                "buttonBlack": "#1C1C1C"
+                "buttonBlueTransparente": "rgba(135,206,235,0.5)",
+                "buttonBlack": "#1C1C1C", 
+                "buttonBlackTransparente": "rgba(0, 0, 0, 0.7)"
+            }, 
+            "background":{
+                "fundoBlack": "rgba(0, 0, 0, 0.6)",
+                "fundoBlack1": "rgba(0, 0, 0, 0.8)",
+                "fundoBlue": "rgba(135,206,235,0.5)"
             }
             
         }
